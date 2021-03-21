@@ -16,17 +16,6 @@ namespace MMFood.Service
 {
     public static class SheetService
     {
-        
-        private static readonly string[] Scopes = { SheetsService.Scope.Spreadsheets };
-        private const string SpreadsheetId = "1tLagRZBycZmlKWDvOjfVtPkMReTDflpY6NMAL7yr_dM";
-        private const string GoogleCredentialsFileName = "credentials.json";
-       
-        /*
-           Sheet1 - tab name in a spreadsheet
-           A:B     - range of values we want to receive
-        */
-        private const string ReadRange = "Sheet1!A:B";
-
         public static Post[] GetData(SheetResponse apiresponse)
         {
             List<Post> posts = new List<Post>();
