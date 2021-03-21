@@ -1,0 +1,53 @@
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+}
+
+.top-row {
+    background-color: #30373F;
+    justify-content: flex-start;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-row {
+    background-color: #30373F;
+    color: white;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 640.98px) {
+
+    .top-row a, .top-row .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .main > div {
+        padding-left: 2rem !important;
+    }
+}

@@ -1,0 +1,13 @@
+﻿h1 {
+    margin-bottom: 0.5rem;
+}
+
+.ingress {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+}
+
+.jumbotron {
+    background-color: #FFFFD1;
+    border-radius: 0;
+}

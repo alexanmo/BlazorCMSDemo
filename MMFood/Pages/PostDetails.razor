@@ -1,0 +1,50 @@
+﻿@page "/oppskrift/{RowNumber}"
+@inject HttpClient Http
+@using Models
+@using Service
+
+@if (post == null)
+{
+    <p><em>Laster...</em></p>
+}
+else
+{
+
+<div class="container">
+    <div class="jumbotron p-4">
+        <h1 class="mb-3 mt-0">@post.Title</h1>
+        <p class="lead">@post.Ingress</p>
+    </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="article-image mb-5">
+                    @((MarkupString)post.ArticleImage)
+                </div>
+            </div>
+            <div class="col-md-8">
+                @foreach (var block in post.ContentBlocks)
+                {
+                    <div>@((MarkupString)block)</div>
+                }
+                <div class="date pb-1 mt-5">Publisert @post.Published</div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    }
+
+    @code {
+private Post post;
+    [Parameter] public string RowNumber { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var range = "Sheet1!A" + RowNumber + ":I" + RowNumber;
+        var apiResult = await Http.GetFromJsonAsync<SheetResponse>($"https://sheets.googleapis.com/v4/spreadsheets/1tLagRZBycZmlKWDvOjfVtPkMReTDflpY6NMAL7yr_dM/values/{range}?key=AIzaSyDNZZjHTkRQN5Vstj1IGlM5c6OGtFkmS4E");
+
+        post = SheetService.GetData(apiResult).FirstOrDefault();
+
+    }
+    }

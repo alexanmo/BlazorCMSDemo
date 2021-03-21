@@ -1,0 +1,7 @@
+#A6B95F gusj
+#A84035 rød
+#3D594D grønn
+#FFFFD1 påske
+#30373F gråsvart
+
+dotnet watch -p C:\Code\MMFood\MMFood\ run

@@ -1,0 +1,42 @@
+.navbar-toggler {
+    background-color: #A84035;
+}
+
+.top-row {
+    height: 3.5rem;
+    background-color: #A6B95F;
+}
+
+.oi {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item {
+    font-size: 1rem;
+}
+
+    .nav-item ::deep a {
+        background-color: #3D594D;
+        color: white;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+        margin-right: 1rem;
+    }
+
+        .nav-item ::deep a.active {
+            color: white;
+            background-color: #A84035;
+        }
+
+        .nav-item ::deep a:hover {
+            color: #30373F;
+            background-color: #FFFFD1;
+        }
+
+@media (min-width: 641px) {
+}

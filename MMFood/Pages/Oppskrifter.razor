@@ -1,0 +1,72 @@
+﻿@page "/oppskrifter"
+@inject HttpClient Http
+@using Models
+@using Service
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 py-4">
+            <h1>Oppskrifter</h1>
+            <p>Her kommer det mange oppskrifter. Følg med!</p>
+        </div>
+    </div>
+
+</div>
+
+
+@if (posts == null)
+{
+<p><em>Laster...</em></p>
+}
+else
+{
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="posts d-flex justify-content-start flex-wrap">
+                @foreach (var post in posts)
+    {
+                <li class="post">
+                    <a href="@($"oppskrift/{post.RowNumber}")">
+                        <h2>@post.Title</h2>
+                        <div class="teaser-image">
+                            @((MarkupString)post.TeaserImage)
+                        </div>
+                        <p>@post.Teaser</p>
+                    </a>
+                </li>
+    }
+            </ul>
+        </div>
+    </div>
+</div>
+}
+
+@code {
+
+    private Post[] posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var apiResult = await Http.GetFromJsonAsync<SheetResponse>("https://sheets.googleapis.com/v4/spreadsheets/1tLagRZBycZmlKWDvOjfVtPkMReTDflpY6NMAL7yr_dM/values/Sheet1!A2:C20?key=AIzaSyDNZZjHTkRQN5Vstj1IGlM5c6OGtFkmS4E");
+
+        posts = SheetService.GetData(apiResult);
+
+    }
+
+
+
+
+
+    public class WeatherForecast
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}
